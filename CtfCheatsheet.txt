@@ -47,7 +47,7 @@ ffuf -w /usr/share/seclists\Usernames\xato-net-10-million-usernames.txt -u http:
 ### BRUTE FORCE
 ```
  ##JOHN THE RIPPER
- ```
+ ``
 
 .\john.exe .\hashes.txt --mask=susan_nasus_?d?d?d?d?d?d?d?d?d --format=Raw-SHA256  --> --mask= si sabes algo en concreto de la password, en este caso sabes que empieza por susan_nasus y va del 1 al 1.000.000.000 de hay que sea ?d?d?d?d?d?d?d?d?d --format= añades el formato del hash esto lo buscas en -> https://hashcat.net/wiki/doku.php?id=example_hashes
 
@@ -64,7 +64,7 @@ a | ?l?u?d?s
 b | 0x00 - 0xff
 
  ## HASHCAT
- ```
+ ``
 
 hashcat -a 3 -m 18200  abeb6f8eb5722b8ca3b45f6f72a0cf17c7028d62a15a30199347d9d74f39023f "susan_nasus_?d?d?d?d?d?d?d?d?d"
 -m 1400 = porque el hash es tipo Raw-SHA256, sacas que es 1400 de aqui https://hashcat.net/wiki/doku.php?id=example_hashes
@@ -76,7 +76,7 @@ hashcat -a 3 -m 18200 hashes.txt rockyou.txt
 ### SSH-SCP
 ```
  ##SSH
- ```
+ ``
 conectar por SSH ---> user@IP ---> te pide la pass luego
 ssh-keygen -f "user"  ---> crea tu key(llave) ssh-keygen -f "peterolord"
 echo "public key" > /home/susan/.ssh/authorized_keys  ---> mete tu keyn en el fichero del servidor authorizedkey para poder utilizarlo 
@@ -85,7 +85,7 @@ ssh -i susan susan@10.10.11.253 --> teniendo la key de susan
 	nombrekey  user@IPMaquina	
 
  ##SCP
- ```
+ ``
 subir ficheros --> scp -i peterolord ./Downloads/linpeas.sh  susan@10.10.11.253:/tmp  --> (peterolord=mi key) /user@IP/direccion donde quieres subir el archivo 
 bajar ficheros --> scp -i peterolord susan@10.11.253.10:/rutadelficheroadescargar ./rutadondequieresdescargarlo	
 TENIENDO CONTRASEÑA ---> no se pone -i peterolord --->scp ./Downloads/linpeas.sh  susan@10.10.11.253:/tmp
