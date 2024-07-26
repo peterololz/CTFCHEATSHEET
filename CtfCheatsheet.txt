@@ -147,7 +147,10 @@ bloodhound-python -d jab.htb -c all -u svc_openfire -p '!@#$%^&*(1qazxsw' -ns 10
 	smbclient --no-pass //IP/Folder   (se conecta a la carpeta)
 	smbclient -L -> lista carpetas compartidas
 
+###EVIL-WINRM 
+```
 
+evil-winrm -i 10.129.136.91 -u administrator -p badminton
 
 ### NTLM
 ```
