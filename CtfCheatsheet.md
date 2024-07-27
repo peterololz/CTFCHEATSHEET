@@ -1,5 +1,11 @@
 # CtfCheatsheet
 
+
+### BASICS
+```
+CAT en windows es TYPE
+WGET en windows es WGET nombredelarchivooriginal -OUTFILE nombrequequieras
+```
 ### NMAP
 ```
 nmap *10.129.196.97 -p 1-65535 -T4 -A -v   //// -T4(limite de tiempo) -A ( agresivo inclue -sV ( versiones) -sC (scripts) -O (-o sistema operativo)) -v (muestre mas cosas en consolas)
