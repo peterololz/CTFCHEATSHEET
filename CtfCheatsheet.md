@@ -5,6 +5,38 @@
 ```
 CAT en windows es TYPE
 WGET en windows es WGET nombredelarchivooriginal -OUTFILE nombrequequieras
+En windows mirar carpetas ocultas no es -la es ls -force
+```
+### WINDOWS
+```
+cmdkey /list
+whoami /all
+wmic logicaldisk get name
+get-process
+winpeas.exe
+powerup.ps1 invoke-allchecks
+dir \ /s/b | find ""
+findstr /sp administrator *
+
+```
+### SMB TRASNFER FILES
+```
+
+sudo impacket-smbserver share ./ -> Te transfiere los archivos del directorio en el que te encuentres
+```
+### LDAP
+```
+ldapsearch -x -H ldap://10.10.10.169  -D '' -w '' -b "DC=megabank,DC=local" --> te busca todo lo que hay en el directorio activo si no te pide usuario y contraseña
+ldapsearch -x -H ldap://10.10.10.169 -D '' -w '' -b "DC=megabank,DC=local" -s sub "(objectclass=user)" | grep description,info --> busca mas especificamente la clase user que tenga ''descripcion o info'' (solo 1 por vez)
+
+ldapsearch -x -H ldap://10.10.10.169 -D '' -w '' -b "DC=megabank,DC=local"  | grep sAMAccountName: --> te saca solo lista de usuarios
+
+```
+### COMPROBAR USUARIOS/PASSWD
+```
+crackmapexec smb 10.10.10.169 -u ./users -p password --no-bruteforce ---> te comprueba una lista de usuarios contra una lista de passwd
+crackmapexec smb 10.10.10.169 -u ./users -p Welcome123! --no-bruteforce ---> te comprueba una lista de usuarios contra un passwd en concreto
+
 ```
 ### NMAP
 ```
@@ -237,3 +269,23 @@ nslookup
   server "ip"
   ls -d ctfolympus.htb
 
+
+```
+### ENLACES DE INTERES
+```
+
+https://app.hackthebox.com/home
+https://www.exploit-db.com/ ----> buscar vulnerabilidades conocidas de por ejemplo servidores de paginas web de cualquier año
+https://book.hacktricks.xyz/welcome/readme  ----> de todo 
+https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2023_02.svg ----> active directory    
+https://gchq.github.io/CyberChef/ ---> encripta/desencripta cualquier formato
+https://gtfobins.github.io/  ---> escalar privilegios windows/linux por ejemplo consigues permisos de usuario y tienes el programa 7Z pues te dice como escalar a usuario root mediante sudo
+https://ippsec.rocks/  ----> youtuber: ippsec tiene todas las maquinas resueltas de hackthebox y buscas por termino y te lleva al video resolviendo la maquina en el minuto concreto por ejemplo buscas ''nmap -sC''
+https://viperone.gitbook.io/pentest-everything/everything/everything-active-directory/credential-access/steal-or-forge-kerberos-tickets/silver-ticket    ----> como hacktricks
+https://attack.mitre.org/  ---->  tecnicas, muy pesado
+https://jdk.java.net/java-se-ri/7  ----> descargar todas las versiones java
+https://www.thehacker.recipes/ad/persistence/sid-history  ---> como hacktricks
+https://jwt.io ---> lee cookies
+https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/README.md#blind-xss ---> XSS SCRIPT
+https://github.com/Lopsy84/CtfCheatsheet  ----> apuntes alvaro
+https://lolbas-project.github.io/  ---> programas que puedes usar para escalar privilegios WINDOWS
