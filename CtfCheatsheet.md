@@ -20,6 +20,13 @@ dir \ /s/b | find ""
 findstr /sp administrator *
 
 ```
+### POWERVIEW
+Import-Module .\PowerView.ps1 ----> Para activar el powerview si no el add-object/add-domain/get-domain no te funcionaran
+
+```
+
+
+```
 ### SMB TRASNFER FILES
 ```
 
@@ -191,10 +198,17 @@ impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasti
 bloodhound-python -d jab.htb -c all -u svc_openfire -p '!@#$%^&*(1qazxsw' -ns 10.10.11.4 --zip ---> te devuelve un archivo zip que lueg
 lo metes en el bloodhound, lo analiza y te dice que pasos seguir para escalar privilegios
 
+SI NO TE ABRE LOS JSON/ZIP QUE HAS OBTENIDO DEL BLOODHOUND PROBAR CON RUSTHOUND!!!!
 
-bloodhound-python -d jab.htb -c all -u svc_openfire -p '!@#$%^&*(1qazxsw' -ns 10.10.11.4 --zip
+```
+### RUSTHOUND
+```
+/home/kali/.cargo/bin/rusthound --domain htb.local ---> si el los json/zip del bloodhound no te abren probar a descargarlos de aqui e importarlos
 
-139/445 ---> SMB (COMPARTIR CARPETA)
+```
+### 139/445 ---> SMB (COMPARTIR CARPETA)
+```
+
 	crackmapexec smb 10.129.71.181 -u '' -p '' --shares (shares = cualquier carpeta) 
 	lista carpetas que hay compartidas con login null
 	crackmapexec smb 10.129.71.181 -u 'anonymous' -p '' --shares
