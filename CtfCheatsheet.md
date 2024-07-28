@@ -24,7 +24,11 @@ findstr /sp administrator *
 Import-Module .\PowerView.ps1 ----> Para activar el powerview si no el add-object/add-domain/get-domain no te funcionaran
 
 ```
+```
+### SSTI
 
+${{<%[%'"}}%\ probar estos caracteres si da error puede ser suscetible de ssti
+```
 
 ```
 ### SMB TRASNFER FILES
@@ -108,7 +112,7 @@ Tambien se puede descargar desde dentro de ftp con get filename
 
 ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -e .php,.html,.sh,.txt,.aspx -u http://10.10.11.175:8530/FUZZ -mc all -ic  ----->> lista directorios que hay en la pagina
 ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://siteisup.htb -H "Host: FUZZ.siteisup.htb" -fs
-ffuf -w /usr/share/seclists/Fuzzing/special-chars.txt -u http://10.10.10.70/submit -d "character=bart&quote=FUZZ" -H Content-Type:application/x-www-form-urlencoded -mc all
+ffuf -w /usr/share/seclists/Fuzzing/special-chars.txt -u http://10.10.10.70:8080/submit -d "character=bart&quote=FUZZ" -H Content-Type:application/x-www-form-urlencoded -mc all
 ffuf -w /usr/share/seclists\Usernames\xato-net-10-million-usernames.txt -u http://10.10.11.160:5000/login -d "username=FUZZ&password=nidecoña" -H Content-Type:application/x-www-form-urlencoded -mr 'Invalid login'
   -fs es para excluir sites que se repitan
 ```
