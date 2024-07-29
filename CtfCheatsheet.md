@@ -28,6 +28,7 @@ Import-Module .\PowerView.ps1 ----> Para activar el powerview si no el add-objec
 ### SSTI
 
 ${{<%[%'"}}%\ probar estos caracteres si da error puede ser suscetible de ssti
+Si sabes que framework utiliza la web buscas el nombre del framework ssti si no lo sabes pruebas con la imagen del identify ---> https://portswigger.net/research/server-side-template-injection
 ```
 
 ```
