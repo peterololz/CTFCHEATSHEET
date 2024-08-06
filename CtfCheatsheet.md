@@ -329,3 +329,4 @@ https://jwt.io ---> lee cookies
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XSS%20Injection/README.md#blind-xss ---> XSS SCRIPT
 https://github.com/Lopsy84/CtfCheatsheet  ----> apuntes alvaro
 https://lolbas-project.github.io/  ---> programas que puedes usar para escalar privilegios WINDOWS
+
