@@ -21,7 +21,15 @@ winpeas.exe
 powerup.ps1 invoke-allchecks
 dir \ /s/b | find ""
 findstr /sp administrator *
-
+```
+### LINUX
+```
+sudo -l
+linpeas
+pspy64
+find / -type f -newermt "2019-05-05" ! -newermt "2019-05-26" -ls 2>/dev/null
+grep -R -i passwd,password,db_passwd,db_pass
+export PATH=.:$PATH
 ```
 ### POWERVIEW
 Import-Module .\PowerView.ps1 ----> Para activar el powerview si no el add-object/add-domain/get-domain no te funcionaran
