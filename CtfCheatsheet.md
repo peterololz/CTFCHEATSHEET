@@ -12,6 +12,7 @@ En evilwinrm para descargar un archivo directamente desde mi ordenador UPLOAD ru
 Siempre que ponga file= probar con ../../../../../../etc/passwd (LFI)
 Si se junta LFI y PHP mira a ver si puedes hacer log poison
 
+
 ```
 ### WINDOWS
 ```
@@ -37,7 +38,11 @@ export PATH=.:$PATH
 Import-Module .\PowerView.ps1 ----> Para activar el powerview si no el add-object/add-domain/get-domain no te funcionaran
 
 ```
+```
+### FREEBSD
 
+Sockstat --> ver puertos abiertos si linpeas no te lo reconoce
+```
 ```
 ### ABRIR SERVER PARA DESCARGAR COSAS
 
@@ -45,6 +50,14 @@ python3 -m http.server 80
 python -m SimpleHTTPServer  80
 
 
+```
+```
+### TUNNEL SSH
+
+El tunel sirve para cuando te encuentras un puerto abierto que necesite de interfaz grafica como vncviewer
+ssh -L 9999:127.0.0.1:5901 charix@10.10.10.84
+
+ssh -L puertoquequeremosaccederdesdemimaquina:127.0.0.1:puertodelservicio usuario@IP
 ```
 ```
 ### SSTI
