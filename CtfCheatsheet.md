@@ -37,6 +37,15 @@ export PATH=.:$PATH
 Import-Module .\PowerView.ps1 ----> Para activar el powerview si no el add-object/add-domain/get-domain no te funcionaran
 
 ```
+
+```
+### ABRIR SERVER PARA DESCARGAR COSAS
+
+python3 -m http.server 80
+python -m SimpleHTTPServer  80
+
+
+```
 ```
 ### SSTI
 
