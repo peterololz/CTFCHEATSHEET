@@ -11,10 +11,10 @@
 
 ```
 ### GIT
-
+```
 git log
 git diff commit
-```
+
 ```
 ### BASICS
 ```
