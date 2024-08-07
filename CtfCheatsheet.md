@@ -14,6 +14,8 @@
 ```
 git log
 git diff commit
+git branch
+git checkout dev --> en el branch te ha salido que habia un dev y estabas en public, asi lo cambias a dev
 
 ```
 ### BASICS
@@ -164,10 +166,12 @@ Tambien se puede descargar desde dentro de ftp con get filename
 		-status 200 ---> buscamos este
 		-status 301 ---> comun como el 404
 
-ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -e .php,.html,.sh,.txt,.aspx -u http://10.10.11.175:8530/FUZZ -mc all -ic  ----->> lista directorios que hay en la pagina
+ffuf -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -e .php,.html,.sh,.txt,.aspx -u http://10.10.11.175:8530/FUZZ -mc all -ic  ---->> lista directorios que hay en la pagina
 ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://siteisup.htb -H "Host: FUZZ.siteisup.htb" -fs
 ffuf -w /usr/share/seclists/Fuzzing/special-chars.txt -u http://10.10.10.70:8080/submit -d "character=bart&quote=FUZZ" -H Content-Type:application/x-www-form-urlencoded -mc all  ---> probar caracteres especiales para inyeccion SSTI
 ffuf -w /usr/share/seclists\Usernames\xato-net-10-million-usernames.txt -u http://10.10.11.160:5000/login -d "username=FUZZ&password=nidecoña" -H Content-Type:application/x-www-form-urlencoded -mr 'Invalid login'
+ffuf -w /usr/share/seclists/Fuzzing/LFI/LFI-Jhaddix.txt -u http://10.10.11.164/uploads/FUZZ  ---> PRUEBA TODOS LOS LFI POSIBLES PARA LA PAGINA 10.10.11.164/UPLOADS
+  -mc para filtrar que solo salga lo que quieras de status 'c'
   -fs es para excluir sites que se repitan
 ```
 ### BRUTE FORCE
