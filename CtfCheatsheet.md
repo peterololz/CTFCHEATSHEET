@@ -142,6 +142,8 @@ nmap *10.129.196.97 -p 1-65535 -T4 -A -v   //// -T4(limite de tiempo) -A ( agres
 
 nmap -sS -sU -T4 -A -v 10.10.10.3 (puertos udp)
 
+nmap 10.10.14.4 -sn ---> te dice las ips que hay internamente 
+
 ```
 ### REVERSE SHELL
 ```
