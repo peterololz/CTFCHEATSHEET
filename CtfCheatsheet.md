@@ -392,7 +392,10 @@ nslookup
   server "ip"
   ls -d ctfolympus.htb
 
-
+```
+### PORT KNOCKING
+nmap -Pn --max-retries=0 -p 3456,8234,62431 10.10.10.83  --scan-delay 0.2 ---> al enviar el nmap a esos 3 puertos 
+```
 ```
 ### ENLACES DE INTERES
 ```
