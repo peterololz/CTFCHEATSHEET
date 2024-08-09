@@ -85,6 +85,8 @@ ssh -L 9999:127.0.0.1:5901 charix@10.10.10.84
 
 ssh -L puertoquequeremosaccederdesdemimaquina:127.0.0.1:puertodelservicio usuario@IP
 
+localhost:9999
+
 ```
 ### CHISEL
 ```
