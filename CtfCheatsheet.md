@@ -2,12 +2,13 @@
 
 ### PUERTOS COMUNES
 ```
-22:ssh
+22/2222:ssh
 80/8080: http
 443: https
 139/445: smb
 21: ftp
 3306: mysql
+53: DNS
 
 ```
 ### GIT
