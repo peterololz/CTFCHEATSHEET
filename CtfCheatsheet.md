@@ -386,7 +386,7 @@ o bien dentro del burp suite o bien en el navegador -> (navegador) -> click dere
 ### ZONE TRASNFER(tcp 53)
 ```
  Linux ->
-dig axfr @"ip" dns
+dig axfr @"ip" dns ---> saca nombres de subdominios dns
 Windows -> 
 nslookup
   server "ip"
