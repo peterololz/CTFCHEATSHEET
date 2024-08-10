@@ -34,6 +34,12 @@ Si se junta LFI y PHP mira a ver si puedes hacer log poison
 find / 2>/dev/null | grep \.txt$  ---> \. -> termina en txt,,  $ -> fin de linea, no hay nada detras del txt
 FOOTHOLD --> todo lo que haces hasta llegar a una shell
 ```
+### VBOX 
+```
+sudo VBoxClient --clipboard
+sudo apt-get update
+sudo apt-get install virtualbox-guest-x11
+```
 ### SUDOERS
 ```
 echo "dev01    ALL=(ALL:ALL) ALL" >> /etc/sudoers   ---> cuando ejecutas algo como root puedes añadirle el usuario dev01 a la lista de sudoers y asi le das privilegios de root
