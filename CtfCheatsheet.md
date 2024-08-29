@@ -128,6 +128,11 @@ ldapsearch -x -H ldap://10.10.10.169 -D '' -w '' -b "DC=megabank,DC=local" -s su
 ldapsearch -x -H ldap://10.10.10.169 -D '' -w '' -b "DC=megabank,DC=local"  | grep sAMAccountName: --> te saca solo lista de usuarios
 
 ```
+### KERBEROS
+```
+
+https://gist.github.com/TarlogicSecurity/2f221924fef8c14a1d8e29f3cb5c5c4a
+```
 ### ENUMERAR USUARIOS/PASSWD WINDOWS
 ```
 impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
@@ -153,6 +158,7 @@ enumdomusers
 enumdomgroups
 querygrouomem 0x200 ---> 0x200 es el grupo admin, esto te dira que usuarios estan dentro de ese grupo
 queryuser 0x1f4 ---> te dice que usuario es el 0x1f4, en este caso el admin
+querydispinfo
 
 ```
 ### NMAP
@@ -321,7 +327,8 @@ SI NO TE ABRE LOS JSON/ZIP QUE HAS OBTENIDO DEL BLOODHOUND PROBAR CON RUSTHOUND!
 ### 139/445 ---> SMB (COMPARTIR CARPETA)
 ```
 
-	crackmapexec smb 10.129.71.181 -u '' -p '' --shares (shares = cualquier carpeta) 
+	crackmapexec smb 10.129.71.181 -u '' -p '' --shares (shares = cualquier carpeta)
+        crackmapexec winrm ip -u 'svc_alfresco' -p 's3rvice' ---> el user alfredco pertenece al grupo remote management users por tanto puede acceder a consola por evilwinrm
 	lista carpetas que hay compartidas con login null
 	crackmapexec smb 10.129.71.181 -u 'anonymous' -p '' --shares
 	loggin con usuario
@@ -410,8 +417,9 @@ nslookup
 
 ```
 ### PORT KNOCKING
-nmap -Pn --max-retries=0 -p 3456,8234,62431 10.10.10.83  --scan-delay 0.2 ---> al enviar el nmap a esos 3 puertos 
 ```
+nmap -Pn --max-retries=0 -p 3456,8234,62431 10.10.10.83  --scan-delay 0.2 ---> al enviar el nmap a esos 3 puertos 
+
 ```
 ### ENLACES DE INTERES
 ```
