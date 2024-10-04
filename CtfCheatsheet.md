@@ -96,6 +96,11 @@ ssh -L puertoquequeremosaccederdesdemimaquina:127.0.0.1:puertodelservicio usuari
 
 localhost:9999
 
+
+OTRA FORMA
+
+ssh michael@10.10.11.32 -L 127.0.0.1:8081:127.0.0.1:8080
+			   127.0.0.1:puertoqueuqeremosaccederdesdemimaquina:127.0.0.1:puertodelservicio
 ```
 ### CHISEL
 ```
