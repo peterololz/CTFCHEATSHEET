@@ -46,6 +46,11 @@ sudo apt-get install virtualbox-guest-x11
 ```
 echo "dev01    ALL=(ALL:ALL) ALL" >> /etc/sudoers   ---> cuando ejecutas algo como root puedes añadirle el usuario dev01 a la lista de sudoers y asi le das privilegios de root
 
+creas el archivo privesc en /tmp
+#!/bin/bash
+chmod u+s /bin/bash permite a cualquier usuario del sistema ejecutar la bash como root
+chmod 777 /tmp/privesc le das privilegios
+bash -p lo ejecutas y te conviertes en root
 
 ```
 ### WINDOWS
