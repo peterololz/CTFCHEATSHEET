@@ -77,7 +77,10 @@ export PATH=.:$PATH
 ```
 Import-Module .\PowerView.ps1 ----> Para activar el powerview si no el add-object/add-domain/get-domain no te funcionaran
 
-
+```
+### CURL
+```
+curl -s --path-as-is http://localhost:8080/assets/../../../../root/root.txt ---> curl te devuelve lo que hay en la pagina assets, --path-as-is hace que no se eliminen los /../../
 ```
 ### FREEBSD
 ```
