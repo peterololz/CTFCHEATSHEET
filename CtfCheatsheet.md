@@ -32,6 +32,7 @@ En evilwinrm para descargar un archivo directamente desde mi ordenador UPLOAD ru
 Siempre que ponga file= probar con ../../../../../../etc/passwd (LFI)
 Si se junta LFI y PHP mira a ver si puedes hacer log poison
 find / 2>/dev/null | grep \.txt$  ---> \. -> termina en txt,,  $ -> fin de linea, no hay nada detras del txt
+find / -type f -name "flag.txt" 2>/dev/null
 FOOTHOLD --> todo lo que haces hasta llegar a una shell
 Cuando estemos dentro de un sistema WINDOWS hacer WHOAMI /ALL PARA VER PERMISOS RAROS COMO POR EJEMPLO DE BACKUP/RESTORE Y LUEGO BUSCAR POR EL NOMBRE+PRIVESC
 Las contraseñas en linux estan en /etc/shadow
